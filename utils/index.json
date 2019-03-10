@@ -1,0 +1,58 @@
+{
+    "hosts": [
+        {
+            "name": "python001",
+            "info": {
+                "phones": [
+                    {
+                        "serial_no": "AG5SZMC791808750",
+                        "status": "1"
+                    },
+                    {
+                        "serial_no": "NE1GAM4812612344",
+                        "status": "0"
+                    },
+                    {
+                        "serial_no": "NE1GAM47A2510336",
+                        "status": "0"
+                    },
+                    {
+                        "serial_no": "NE1GAM4811901318",
+                        "status": "0"
+                    },
+                    {
+                        "serial_no": "NE1GAM4812102717",
+                        "status": "1"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "python002",
+            "info": {
+                "phones": [
+                    {
+                        "serial_no": "NE1GAM4812612344",
+                        "status": "1"
+                    },
+                    {
+                        "serial_no": "NE1GAM4812613007",
+                        "status": "0"
+                    },
+                    {
+                        "serial_no": "NE1GAM4812711924",
+                        "status": "1"
+                    },
+                    {
+                        "serial_no": "NE1GAM4812801929",
+                        "status": "1"
+                    },
+                    {
+                        "serial_no": "NE1GAM4812807371",
+                        "status": "0"
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+.alert-warning hr {
+    margin-top:0px;
+    border-top:2px solid;
+    border-top-color: black;
+}
+
+.p {
+    font-size: 20px;
+    color: yellowgreen;
+}

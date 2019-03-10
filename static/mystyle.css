@@ -1,0 +1,17 @@
+.alert-info hr {
+    margin-top:0px;
+    border-top:2px solid;
+}
+
+.alert-info p {
+    color: #666;
+}
+
+th {
+    width: 150px;
+    padding-left: 5px;
+}
+
+td {
+    padding-left: 5px;
+}

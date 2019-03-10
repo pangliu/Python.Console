@@ -1,0 +1,69 @@
+{%- extends "bootstrap/base.html" %}
+
+{% import "bootstrap/utils.html" as utils %}
+
+{% block head %}
+    {{super()}}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Add icon library -->
+    <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
+
+    <style>
+        .work {
+            color: greenyellow;
+        }
+    </style>
+    {{nav.my_navbar.render()}}
+{% endblock %}
+
+{% block content %}
+
+<div class="container" style="margin-top:20px">
+    <div class="nav nav-tabs">
+        <li class="active">
+            <a href="/device_log/{{serianlNo}}">log</a>
+        </li>
+        <li>
+            <a href="/device_api/{{serianlNo}}">api</a>
+        </li>
+    </div>
+    <h3>Device SerianNo: {{serianlNo}}</h3>
+    <div>
+        <table class="table" >
+            <thead>
+                <tr>
+                    <th>execute_time</th>
+                    <th>task_id</th>
+                    <th>mission_type</th>
+                    <th>bank_code</th>
+                    <th>adb_command</th>
+                    <th>test_case_status</th>
+                    <th>test_case_result</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for device_log in deviceLogs['device_logs'] %}
+                    <tr>
+                        <td>{{device_log['execute_time']}}</td>
+                        <td>{{device_log['task_id']}}</td>
+                        <td>{{device_log['mission_type']}}</td>
+                        <td>{{device_log['bank_code']}}</td>
+                        <td style="word-break:break-all;">{{device_log['adb_command']}}</td>
+                        <td>{{device_log['test_case_status']}}</td>
+                        <td style="word-break:break-all;">{{device_log['test_case_result']}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%- endblock %}
