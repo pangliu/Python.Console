@@ -32,10 +32,12 @@
                     data-target="#collapseOne{{host['name']}}"
                     aria-expanded="true"
                     aria-controls="collapseOne{{host['name']}}">
-                    {{host['name']}}
+                    <p style="font-size:20px">
+                        {{host['name']}}
+                    <p>
                 </button>
                 <button 
-                    class="btn_icon"
+                    class="btn btn-primary"
                     type="button"
                     onclick="window.location.href='{{url_for('server_log', serverName=host['name'])}}';">
                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
@@ -47,31 +49,34 @@
                 aria-labelledby="headingOne"
                 data-parent="#accordionExample{{host['name']}}">
                 <div class="card-body">
-                    <h3>{{host['name']}}的裝置列表</h3>
-                    <table>
+                    <table class="table table-striped">
                         <thead>
-                            <tr class="text-center">
-                                <th style="text-align:center">serial_no</th>
+                            <tr >
+                                <th>device_serial_no</th>
                                 <th>device_status</th>
-                                <th style="padding-left:20px;padding-right:20px">device_detail</th>
+                                <th>device_detail</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for phone in host['info']['phones'] %}
-                                <tr class="text-center">
-                                    <td style=padding-left:20px;padding-right:20px>{{phone['serial_no']}}</td>
+                                <tr>
+                                    <td style="vertical-align:middle">{{phone['serial_no']}}</td>
                                     {% if phone['status'] == '1' %}
-                                    <td class="work fas fa-lightbulb text-center" style="align:center;color:#77ef15bd"></td>
+                                    <td style="vertical-align:middle">
+                                        <i class="work fas fa-lightbulb" style="color:green"></i>
+                                    </td>
                                     {% else %}
-                                    <td class="nonwork fas fa-lightbulb" style="align:center"></td>
+                                    <td style="vertical-align:middle">
+                                        <i class="nonwork fas fa-lightbulb" style="color:#666"></i>
+                                    </td>
                                     {% endif %}
                                     <td>
                                         <button 
-                                            class="fa fa-arrow-right"
+                                            class="btn btn-primary"
                                             aria-hidden="true"
                                             type="button"
                                             onclick="window.location.href='{{url_for('device_log', serianlNo=phone['serial_no'])}}';">
-                                        </button>
+                                        detail</button>
                                     </td>
                                 </tr>
                             {% endfor %}

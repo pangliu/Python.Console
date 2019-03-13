@@ -38,7 +38,7 @@
     </div>
     <h3>Device SerianNo: {{serianlNo}}</h3>
     <div>
-        <table class="table" >
+        <table class="table table-striped" >
             <thead>
                 <tr>
                     <th>execute_time</th>
@@ -51,7 +51,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for device_log in deviceLogs['device_logs'] %}
+                {% for device_log in device_logs['device_logs'] %}
                     <tr>
                         <td>{{device_log['execute_time']}}</td>
                         <td>{{device_log['task_id']}}</td>
