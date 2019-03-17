@@ -1,0 +1,42 @@
+{
+    "code": 200,
+    "msg": "success",
+    "data": [
+        {
+            "task_id":"34",
+            "mission_type":"1",
+            "bank_code":"CMBC",
+            "adb_command":"/Users/hank/Library/Android/sdk/platform-tools/adb -s NE1GAM4812611271 shell am instrument -e class simulation.cmbc.fdi.com.cmbcsimulation.QueryRecordTest -w -e arg 34 simulation.cmbc.fdi.com.cmbcsimulation.test/android.support.test.runner.AndroidJUnitRunner",
+            "test_case_status":"0",
+            "test_case_result":"↵simulation.cmbc.fdi.com.cmbcsimulation.QueryRecordTest:.↵↵Time: 56.187↵↵OK (1 test)↵↵",
+            "execute_time":"2019-01-10 10:32:54"
+        },
+        {
+            "task_id":"34",
+            "mission_type":"1",
+            "bank_code":"CMBC",
+            "adb_command":"/Users/hank/Library/Android/sdk/platform-tools/adb -s NE1GAM4812611271 shell am instrument -e class simulation.cmbc.fdi.com.cmbcsimulation.QueryRecordTest -w -e arg 34 simulation.cmbc.fdi.com.cmbcsimulation.test/android.support.test.runner.AndroidJUnitRunner",
+            "test_case_status":"0",
+            "test_case_result":"↵simulation.cmbc.fdi.com.cmbcsimulation.QueryRecordTest:.↵↵Time: 56.187↵↵OK (1 test)↵↵",
+            "execute_time":"2019-01-10 10:32:54"
+        },
+        {
+            "task_id":"34",
+            "mission_type":"1",
+            "bank_code":"CMBC",
+            "adb_command":"/Users/hank/Library/Android/sdk/platform-tools/adb -s NE1GAM4812611271 shell am instrument -e class simulation.cmbc.fdi.com.cmbcsimulation.QueryRecordTest -w -e arg 34 simulation.cmbc.fdi.com.cmbcsimulation.test/android.support.test.runner.AndroidJUnitRunner",
+            "test_case_status":"0",
+            "test_case_result":"↵simulation.cmbc.fdi.com.cmbcsimulation.QueryRecordTest:.↵↵Time: 56.187↵↵OK (1 test)↵↵",
+            "execute_time":"2019-01-10 10:32:54"
+        },
+        {
+            "task_id":"34",
+            "mission_type":"1",
+            "bank_code":"CMBC",
+            "adb_command":"/Users/hank/Library/Android/sdk/platform-tools/adb -s NE1GAM4812611271 shell am instrument -e class simulation.cmbc.fdi.com.cmbcsimulation.QueryRecordTest -w -e arg 34 simulation.cmbc.fdi.com.cmbcsimulation.test/android.support.test.runner.AndroidJUnitRunner",
+            "test_case_status":"0",
+            "test_case_result":"↵simulation.cmbc.fdi.com.cmbcsimulation.QueryRecordTest:.↵↵Time: 56.187↵↵OK (1 test)↵↵",
+            "execute_time":"2019-01-10 10:32:54"
+        }
+    ]
+}

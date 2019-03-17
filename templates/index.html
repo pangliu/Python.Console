@@ -21,33 +21,33 @@
 {% block content %}
 
 </div>
-    {% for host in hosts['hosts'] %}
+    {% for host in host_info %}
     <div class="container">
         <div class="card" style="margin:10px">
-            <div class="card-header" id="headingOne{{host['name']}}">
+            <div class="card-header" id="headingOne{{host['hostName']}}">
                 <button
                     class="btn btn-link"
                     type="button"
                     data-toggle="collapse"
-                    data-target="#collapseOne{{host['name']}}"
+                    data-target="#collapseOne{{host['hostName']}}"
                     aria-expanded="true"
-                    aria-controls="collapseOne{{host['name']}}">
+                    aria-controls="collapseOne{{host['hostName']}}">
                     <p style="font-size:20px">
-                        {{host['name']}}
+                        {{host['hostName']}}
                     <p>
                 </button>
                 <button 
                     class="btn btn-primary"
                     type="button"
-                    onclick="window.location.href='{{url_for('server_log', serverName=host['name'])}}';">
+                    onclick="window.location.href='{{url_for('server_log', server_name=host['hostName'])}}';">
                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
                 </button>
             </div>
             <div
-                id="collapseOne{{host['name']}}"
+                id="collapseOne{{host['hostName']}}"
                 class="collapse"
                 aria-labelledby="headingOne"
-                data-parent="#accordionExample{{host['name']}}">
+                data-parent="#accordionExample{{host['hostName']}}">
                 <div class="card-body">
                     <table class="table table-striped">
                         <thead>
@@ -58,10 +58,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for phone in host['info']['phones'] %}
+                            {% for phone in host['hostData'] %}
                                 <tr>
-                                    <td style="vertical-align:middle">{{phone['serial_no']}}</td>
-                                    {% if phone['status'] == '1' %}
+                                    <td style="vertical-align:middle">{{phone['serialNo']}}</td>
+                                    {% if phone['status'] == 1 %}
                                     <td style="vertical-align:middle">
                                         <i class="work fas fa-lightbulb" style="color:green"></i>
                                     </td>
@@ -71,12 +71,17 @@
                                     </td>
                                     {% endif %}
                                     <td>
-                                        <button 
-                                            class="btn btn-primary"
-                                            aria-hidden="true"
-                                            type="button"
-                                            onclick="window.location.href='{{url_for('device_log', serianlNo=phone['serial_no'])}}';">
-                                        detail</button>
+                                        <form action="{{ url_for('device_log') }}" id="device_log" method="get">
+                                            <input style="display:none" type="text" name="server_name" value="{{ host['hostName'] }}">
+                                            <input style="display:none" type="text" name="host_url" value="{{ host['hostUrl'] }}">
+                                            <input style="display:none" type="text" name="serial_no" value="{{ phone['serialNo'] }}">
+                                            <button 
+                                                class="btn btn-primary"
+                                                aria-hidden="true"
+                                                type="submit">
+                                                detail
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             {% endfor %}

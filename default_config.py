@@ -17,10 +17,14 @@ class Config():
 
 class ApiConfig():
     SIGN_KEY = '18luck'
-    DEVICE_CONFIG_UPDATE_URL = 'http://localhost:5021/deviceConfig'
-    DEVICE_RESTART_URL = 'http://localhost:5021/restartDevice'
-    HOST_INFO_URL = 'http://localhost:5021/hostInfo'
-    DEVICE_INFO_URL = 'http://localhost:5021/deviceInfo'
+    # DEVICE_CONFIG_UPDATE_URL = 'http://localhost:5021/deviceConfig'
+    # DEVICE_RESTART_URL = 'http://localhost:5021/restartDevice'
+    # HOST_INFO_URL = 'http://localhost:5021/hostInfo'
+    # DEVICE_INFO_URL = 'http://localhost:5021/deviceInfo'
+    # SERVER_APK_UPGRADE_URL = 'http://localhost:5021/upgrade'
+    
+    # 安裝 jenkins 主機的 domain
+    ALL_DEVICE_INFO_URL = 'localhost:5000'
 
 class SqlConfig():
     HOST = '127.0.0.1'

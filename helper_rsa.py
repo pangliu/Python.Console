@@ -30,6 +30,58 @@ vPvy3KGjqq/VrD0="""
 random_generator = Random.new().read
 
 class RsaHelper:
+
+    @staticmethod
+    def rsa_encrypt(msg):
+        pubkey_str = """-----BEGIN PUBLIC KEY-----""" + '\n' + \
+            RSA_PRIVATE + '\n' + """-----END PUBLIC KEY-----"""
+        msg = msg.encode(encoding="utf-8")
+        length = len(msg)
+        default_length = 117
+        # 公鑰加密
+        pubobj = Cipher_pkcs1_v1_5.new(RSA.importKey(pubkey_str))
+        # 長度不用分段
+        if length < default_length:
+            # print('加密不分段')
+            encry_text = base64.b64encode(pubobj.encrypt(msg))
+            encry_value = encry_text.decode('utf8')
+            return encry_value
+        # 需要分段
+        offset = 0
+        res = []
+        encrypt_byte = ''
+
+        while length - offset > 0:
+            # print('加密要分段')
+            if length - offset > default_length:
+                encrypt_msg = pubobj.encrypt(
+                    msg[offset:offset + default_length])
+                # print('encrypt_msg')
+                # print(encrypt_msg)
+                # print(len(encrypt_msg))
+
+                base64_msg = base64.b64encode(encrypt_msg)
+                # print('base64_msg')
+                # print(base64_msg)
+                # print(len(base64_msg))
+                res.append(base64_msg.decode("utf-8"))
+                # res.append(encrypt_msg)
+
+            else:
+                encrypt_msg = pubobj.encrypt(msg[offset:])
+                # print('encrypt_msg')
+                # print(encrypt_msg)
+                # print(len(encrypt_msg))
+
+                base64_msg = base64.b64encode(encrypt_msg)
+                # print('base64_msg')
+                # print(base64_msg)
+                # print(len(base64_msg))
+                res.append(base64_msg.decode("utf-8"))
+
+            offset += default_length
+        return "".join(res)
+
     @staticmethod
     def rsa_decrypt(msg_str):
         # print('res_encrypt: ' + msg_str)

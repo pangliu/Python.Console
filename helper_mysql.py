@@ -43,8 +43,7 @@ class SqlHelp:
                 user=SqlConfig.ACCOUNT,
                 password=SqlConfig.PASSWORD,
                 database=SqlConfig.DB_NAME)
-            print(self.db_connect)
-
+                
     def close_db(self):
         """
         存取完DB需要關閉

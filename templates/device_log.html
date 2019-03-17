@@ -30,13 +30,13 @@
 <div class="container" style="margin-top:20px">
     <div class="nav nav-tabs">
         <li class="active">
-            <a href="/device_log/{{serianlNo}}">log</a>
+            <a href="device_log?server_name={{server_name}}&serial_no={{serial_no}}&host_url={{host_url}}">log</a>
         </li>
         <li>
-            <a href="/device_api/{{serianlNo}}">api</a>
+            <a href="device_api?server_name={{server_name}}&serial_no={{serial_no}}&host_url={{host_url}}">api</a>
         </li>
     </div>
-    <h3>Device SerianNo: {{serianlNo}}</h3>
+    <h3>Device SerialNo: {{serial_no}}</h3>
     <div>
         <table class="table table-striped" >
             <thead>
@@ -66,4 +66,10 @@
         </table>
     </div>
 </div>
+<script>
+    function func(){	
+        var SchoolId  = 0;
+        window.location.href = "school_info.aspx?edit_school=true&school=" + SchoolId;
+    }
+</script>
 {%- endblock %}
