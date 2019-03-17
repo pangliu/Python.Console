@@ -66,8 +66,8 @@ def get_all_device_info(gs_data):
     else:
         resp = None
     # 假資料
-    test_resp = ut.Utils.get_json_file('./utils/test_all_host_info.json')
-    resp = test_resp['data']
+    # test_resp = ut.Utils.get_json_file('./utils/test_all_host_info.json')
+    # resp = test_resp['data']
 
     if resp is not None:
         gs_obj = ut.Utils.handle_host_data(gs_data)

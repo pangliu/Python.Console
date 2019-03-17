@@ -21,76 +21,84 @@
 {% block content %}
 
 </div>
-    {% for host in host_info %}
-    <div class="container">
-        <div class="card" style="margin:10px">
-            <div class="card-header" id="headingOne{{host['hostName']}}">
-                <button
-                    class="btn btn-link"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#collapseOne{{host['hostName']}}"
-                    aria-expanded="true"
-                    aria-controls="collapseOne{{host['hostName']}}">
-                    <p style="font-size:20px">
-                        {{host['hostName']}}
-                    <p>
-                </button>
-                <button 
-                    class="btn btn-primary"
-                    type="button"
-                    onclick="window.location.href='{{url_for('server_log', server_name=host['hostName'])}}';">
-                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                </button>
+    {% if host_info is none %}
+        <div class="container">
+            <div class="alert alert-info alert-warning" role="alert" style="margin-top:20px">
+                <p>連線異常</p>
             </div>
-            <div
-                id="collapseOne{{host['hostName']}}"
-                class="collapse"
-                aria-labelledby="headingOne"
-                data-parent="#accordionExample{{host['hostName']}}">
-                <div class="card-body">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr >
-                                <th>device_serial_no</th>
-                                <th>device_status</th>
-                                <th>device_detail</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for phone in host['hostData'] %}
-                                <tr>
-                                    <td style="vertical-align:middle">{{phone['serialNo']}}</td>
-                                    {% if phone['status'] == 1 %}
-                                    <td style="vertical-align:middle">
-                                        <i class="work fas fa-lightbulb" style="color:green"></i>
-                                    </td>
-                                    {% else %}
-                                    <td style="vertical-align:middle">
-                                        <i class="nonwork fas fa-lightbulb" style="color:#666"></i>
-                                    </td>
-                                    {% endif %}
-                                    <td>
-                                        <form action="{{ url_for('device_log') }}" id="device_log" method="get">
-                                            <input style="display:none" type="text" name="server_name" value="{{ host['hostName'] }}">
-                                            <input style="display:none" type="text" name="host_url" value="{{ host['hostUrl'] }}">
-                                            <input style="display:none" type="text" name="serial_no" value="{{ phone['serialNo'] }}">
-                                            <button 
-                                                class="btn btn-primary"
-                                                aria-hidden="true"
-                                                type="submit">
-                                                detail
-                                            </button>
-                                        </form>
-                                    </td>
+        </div>
+    {% else %}
+        {% for host in host_info %}
+        <div class="container">
+            <div class="card" style="margin:10px">
+                <div class="card-header" id="headingOne{{host['hostName']}}">
+                    <button
+                        class="btn btn-link"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#collapseOne{{host['hostName']}}"
+                        aria-expanded="true"
+                        aria-controls="collapseOne{{host['hostName']}}">
+                        <p style="font-size:20px">
+                            {{host['hostName']}}
+                        <p>
+                    </button>
+                    <button 
+                        class="btn btn-primary"
+                        type="button"
+                        onclick="window.location.href='{{url_for('server_log', server_name=host['hostName'])}}';">
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div
+                    id="collapseOne{{host['hostName']}}"
+                    class="collapse"
+                    aria-labelledby="headingOne"
+                    data-parent="#accordionExample{{host['hostName']}}">
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr >
+                                    <th>device_serial_no</th>
+                                    <th>device_status</th>
+                                    <th>device_detail</th>
                                 </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {% for phone in host['hostData'] %}
+                                    <tr>
+                                        <td style="vertical-align:middle">{{phone['serialNo']}}</td>
+                                        {% if phone['status'] == 1 %}
+                                        <td style="vertical-align:middle">
+                                            <i class="work fas fa-lightbulb" style="color:green"></i>
+                                        </td>
+                                        {% else %}
+                                        <td style="vertical-align:middle">
+                                            <i class="nonwork fas fa-lightbulb" style="color:#666"></i>
+                                        </td>
+                                        {% endif %}
+                                        <td>
+                                            <form action="{{ url_for('device_log') }}" id="device_log" method="get">
+                                                <input style="display:none" type="text" name="server_name" value="{{ host['hostName'] }}">
+                                                <input style="display:none" type="text" name="host_url" value="{{ host['hostUrl'] }}">
+                                                <input style="display:none" type="text" name="serial_no" value="{{ phone['serialNo'] }}">
+                                                <button 
+                                                    class="btn btn-primary"
+                                                    aria-hidden="true"
+                                                    type="submit">
+                                                    detail
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    {% endfor %}
+        {% endfor %}
+    {% endif %}
 </div>
 {%- endblock %}

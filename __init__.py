@@ -41,10 +41,11 @@ def index():
     print('index')
     google_sheet_data = GetGoogleSheet.get_gs_list()
     host_info_data = helper_api.get_all_device_info(google_sheet_data)
+    if host_info_data is None:
+        return render_template('index.html', host_info=host_info_data)
 #   將 model 設定為全域變數
     global model
     model = ApiModel(host_info_data)
-    test_data = ut.Utils.get_json_file('./utils/index.json')
     return render_template('index.html', host_info=host_info_data)
 
 # python_server 的 api_log 列表頁面
